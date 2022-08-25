@@ -12,6 +12,8 @@ const Register = () => {
     alert(`Your Email 2 : ${email} Your Password2: ${PassWord}`);
     //  بک تیک  '' === `` خیلی  مهم
   };
+
+  
   return (
     <div style={{ margin: "15%" }}>
       <Form onSubmit={ClickSubmit}>
