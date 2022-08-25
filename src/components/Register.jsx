@@ -9,7 +9,7 @@ const Register = () => {
   const ClickSubmit = (e) => {
     e.preventDefault();
     // alert("Your Email  :  " + { email });
-    alert(`Your Email  : ${email} Your Password: ${PassWord}`);
+    alert(`Your Email 2 : ${email} Your Password2: ${PassWord}`);
     //  بک تیک  '' === `` خیلی  مهم
   };
   return (
