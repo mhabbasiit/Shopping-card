@@ -122,8 +122,7 @@ function Footer() {
           <div className="text-center text-dark p-3 text-bg-primary">
             © 2020 Copyright:
             <a className="text-dark footer" href="/#">
-              {" "}
-              Mha Abbasi 010101010{" "}
+              Mha Abbasi
             </a>
           </div>
         </footer>

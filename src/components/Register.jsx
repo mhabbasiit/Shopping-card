@@ -1,50 +1,95 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
-const Register = () => {
-  const [email, setEmail] = useState("");
-  const [PassWord, setPassword] = useState("");
+const Register = () => 
+{
+const [password, setPassword] = useState("");
+const [email, setEmail] = useState("");
+const [passwordError, setpasswordError] = useState("");
+const [emailError, setemailError] = useState("");
 
-  const ClickSubmit = (e) => {
-    e.preventDefault();
-    // alert("Your Email  :  " + { email });
-    alert(`Your Email 2 : ${email} Your Password2: ${PassWord}`);
-    //  بک تیک  '' === `` خیلی  مهم
-  };
+const handleValidation = (event) => {
+  let formIsValid = true;
+
+  if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    formIsValid = false;
+    setemailError("Email Not Valid");
+    return false;
+  } else {
+    setemailError("");
+    formIsValid = true;
+  }
+
+  if (!password.match(/^[a-zA-Z]{8,22}$/)) {
+    formIsValid = false;
+    setpasswordError(
+      "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
+    );
+    return false;
+  } else {
+    setpasswordError("");
+    formIsValid = true;
+  }
+
+  return formIsValid;
+};
+
+const loginSubmit = (e) => {
+  e.preventDefault();
+  handleValidation();
+};
 
   
   return (
-    <div style={{ margin: "15%" }}>
-      <Form onSubmit={ClickSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            value={email}
-            type="email"
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Enter email"
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-          value={PassWord}
-          onChange={(e)=>setPassword(e.target.value)}
-          type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+    <div className="App">
+    <div className="container p-4">
+      <div className="row d-flex justify-content-center">
+        <div className="col-md-4">
+          <form id="loginform" onSubmit={loginSubmit}>
+            <div className="form-group">
+              <label>Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                id="EmailInput"
+                name="EmailInput"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <small id="emailHelp" className="text-danger form-text">
+                {emailError}
+              </small>
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              <small id="passworderror" className="text-danger form-text">
+                {passwordError}
+              </small>
+            </div>
+            <div className="form-group form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="exampleCheck1"
+              />
+              <label className="form-check-label">Check me out</label>
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+        
+      </div>
     </div>
+  </div>  
   );
 };
 
