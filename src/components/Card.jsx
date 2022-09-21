@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-function card(x) {
+import { useState } from 'react';
+import CompA from './CompA';
+export const TempChage = React.createContext("");
+function Card(x) {
+  const [count, setCount] = useState(0)
   return (
     <>
       <div className="container pt-3 pb-3" >
@@ -24,6 +28,11 @@ function card(x) {
                           </svg>
                           Add
                         </button> {y.price}</small>
+                        <TempChage.Provider value={{count, setCount}}>
+     <button onClick={()=>setCount(count+1)}>+</button>
+     <button onClick={()=>setCount(count-1)}>-</button>
+     <CompA/>
+    </TempChage.Provider>
                       </div>
                     </div>
                   </div>
@@ -39,4 +48,4 @@ function card(x) {
   )
 }
 
-export default card
+export default Card

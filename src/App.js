@@ -21,6 +21,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import Navtest from "./components/Navtest";
 import Nopage from './components/Nopage';
 import data from "./data/Card.json";
+// import Index2 from "./components/context/Index2";
 
 function App() {
   return (
